@@ -1,0 +1,5 @@
+Details of using processing code
+
+1. Ensure that Calibration is used appropriately and Cal.txt file is updated accordingly
+2. Enter details in Conf.txt and process_list.txt
+3. Run Processing.py
