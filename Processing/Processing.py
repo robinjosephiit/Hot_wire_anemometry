@@ -150,7 +150,7 @@ for k in range(0,siz):
     plt.xlabel('y/$\delta$*',fontsize=18)
     plt.ylabel('(Urms/U$_\infty)*100$',fontsize=18)
     plt.legend(['Urms'])
-    plt.xlim((0,10))
+    plt.xlim((-1,10))
 
     plt.xticks(fontsize=18)
     plt.yticks(fontsize=18)
@@ -185,7 +185,7 @@ for k in range(0,siz):
     
     a=str(Uinf)
     np.savetxt('uflc_' + a[0:6] + '_'+str(con[:-1])+'_'+str(xloc)+'.txt',umaxinst,delimiter =' ')
-    profile=np.zeros((29,3))
+    profile=np.zeros((len(U_norm),3))
     profile[:,0]=y_corr
     profile[:,1]=U_norm*Uinf
     profile[:,2]=Urms
