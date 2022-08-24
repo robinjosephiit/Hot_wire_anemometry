@@ -150,7 +150,7 @@ for k in range(0,siz):
     plt.xlabel('y/$\delta$*',fontsize=18)
     plt.ylabel('(Urms/U$_\infty)*100$',fontsize=18)
     plt.legend(['Urms'])
-    plt.xlim((0,10))
+    plt.xlim((-1,10))
 
     plt.xticks(fontsize=18)
     plt.yticks(fontsize=18)
@@ -177,18 +177,19 @@ for k in range(0,siz):
 
     loc=np.argmax(Urms_filt,axis=0)
     
-    umaxinst=np.zeros((SR*time,2))
+    umaxinst=np.zeros((SR*time,4))
     umaxinst[:,0]=Time
     umaxinst[:,1]=Uflc_filt[:,loc]
-
+    umaxinst[:,2]=Uflc_filt[:,0]
+    umaxinst[:,3]=Uflc_filt[:,-1]
     
     
     a=str(Uinf)
     np.savetxt('uflc_' + a[0:6] + '_'+str(con[:-1])+'_'+str(xloc)+'.txt',umaxinst,delimiter =' ')
-    profile=np.zeros((29,3))
+    profile=np.zeros((len(U_norm),3))
     profile[:,0]=y_corr
     profile[:,1]=U_norm*Uinf
-    profile[:,2]=Urms
+    profile[:,2]=Urms_filt
 
     np.savetxt('profile_' + a[0:5] + '_'+str(con[:-1])+'_'+str(xloc)+'.txt',profile,delimiter =' ')
     print('Time elapsed=',tp.process_time() - start)
